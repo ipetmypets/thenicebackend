@@ -4,6 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
+const { Client } = require('pg');
 const app = express();
 const PORT = process.env.PORT || 5002;
 
