@@ -1,20 +1,19 @@
-// filepath: /Users/urvi/Create Web/thenicetime/backend/server.js
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = process.env.PORT || 5002;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(bodyParser.json());
 
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'ipetmype_bappi',
-    password: 'r5kAcH~R4acr',
-    database: 'ipetmype_thenicetime'
+    host: 'your-cpanel-host',
+    user: 'your-cpanel-username',
+    password: 'your-cpanel-password',
+    database: 'your-cpanel-database'
 });
 
 db.connect(err => {
