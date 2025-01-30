@@ -10,10 +10,10 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const db = mysql.createConnection({
-    host: 'your-cpanel-host',
-    user: 'your-cpanel-username',
-    password: 'your-cpanel-password',
-    database: 'your-cpanel-database'
+    host: 'actual-cpanel-host', // Replace with your actual host
+    user: 'actual-cpanel-username', // Replace with your actual username
+    password: 'actual-cpanel-password', // Replace with your actual password
+    database: 'actual-cpanel-database' // Replace with your actual database name
 });
 
 db.connect(err => {
@@ -49,19 +49,11 @@ app.put('/menu-items/:id', (req, res) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.json({ id: req.params.id, name, price, image, category });
-    });
-});
-
-app.delete('/menu-items/:id', (req, res) => {
-    db.query('DELETE FROM menu_items WHERE id = ?', [req.params.id], (err, results) => {
-        if (err) {
-            return res.status(500).json({ error: err.message });
-        }
-        res.json({ message: 'Item deleted' });
+        res.json({ message: 'Menu item updated successfully' });
     });
 });
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
+    console.log(`You can test the API at http://localhost:${PORT}/menu-items`);
 });
