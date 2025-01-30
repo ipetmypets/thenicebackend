@@ -9,11 +9,13 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
+require('dotenv').config();
+
 const db = mysql.createConnection({
-    host: 'actual-cpanel-host', // Replace with your actual host
-    user: 'actual-cpanel-username', // Replace with your actual username
-    password: 'actual-cpanel-password', // Replace with your actual password
-    database: 'actual-cpanel-database' // Replace with your actual database name
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 db.connect(err => {
