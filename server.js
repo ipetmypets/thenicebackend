@@ -4,7 +4,6 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
-const { Client } = require('pg');
 const app = express();
 const PORT = process.env.PORT || 5002;
 
@@ -78,4 +77,5 @@ app.delete('/menu-items/:id', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
+    console.log(`You can test the API at http://localhost:${PORT}/menu-items`);
 });
