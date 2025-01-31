@@ -1,29 +1,14 @@
+// filepath: /Users/urvi/Create Web/thenicebackend/server.js
 const express = require('express');
-const mysql = require('mysql2');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-require('dotenv').config();
+const db = require('./config/db'); // Import the database connection
 
 const app = express();
 const PORT = process.env.PORT || 5002;
 
 app.use(cors());
 app.use(bodyParser.json());
-
-const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
-});
-
-db.connect(err => {
-    if (err) {
-        console.error('Error connecting to the database:', err);
-        return;
-    }
-    console.log('Connected to the MySQL database');
-});
 
 app.get('/menu-items', (req, res) => {
     console.log('GET request to /menu-items');
